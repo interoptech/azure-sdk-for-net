@@ -44,7 +44,7 @@ APIs for managing device identities, device twins, and querying devices
 ```csharp
 public class Devices
 {
-	/// <summary>
+    /// <summary>
     /// Create a device.
     /// </summary>
     /// <param name="device">The device to create.</param>
@@ -52,7 +52,7 @@ public class Devices
     /// <returns>The created device.</returns>
     public virtual Response<DeviceIdentity> Create(DeviceIdentity device, CancellationToken cancellationToken = default)
 		
-	/// <summary>
+    /// <summary>
     /// Update a device.
     /// </summary>
     /// <param name="device">The device to update.</param>
