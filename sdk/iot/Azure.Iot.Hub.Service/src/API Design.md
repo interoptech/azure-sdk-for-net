@@ -58,7 +58,7 @@ public class Devices
     /// <param name="device">The device to update.</param>
     /// <param name="ifMatch">A string representing a weak ETag for this device, as per RFC7232. The update operation is performed
     /// only if this ETag matches the value maintained by the server, indicating that the device has not been modified since it was last retrieved.
-	/// The current ETag can be retrieved from the device identity last retrieved from the service. To force an unconditional update, set If-Match to the wildcard character (*).</param>
+    /// The current ETag can be retrieved from the device identity last retrieved from the service. To force an unconditional update, set If-Match to the wildcard character (*).</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The created or updated device.</returns>
     public virtual Response<DeviceIdentity> Update(DeviceIdentity device, string ifMatch = null, CancellationToken cancellationToken = default)
@@ -77,7 +77,7 @@ public class Devices
     /// <param name="deviceId">The unique identifier of the device to delete.</param>
     /// <param name="ifMatch">A string representing a weak ETag for this device, as per RFC7232. The delete operation is performed
     /// only if this ETag matches the value maintained by the server, indicating that the device has not been modified since it was last retrieved.
-	/// The current ETag can be retrieved from the device identity last retrieved from the service. To force an unconditional delete, set If-Match to the wildcard character (*).</param>
+    /// The current ETag can be retrieved from the device identity last retrieved from the service. To force an unconditional delete, set If-Match to the wildcard character (*).</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The http response.</returns>
     public virtual Response Delete(string deviceId, string ifMatch = null, CancellationToken cancellationToken = default)
@@ -91,12 +91,12 @@ public class Devices
 	public virtual Response<BulkRegistryOperationResult> Create(IEnumerable<DeviceIdentity> devices, CancellationToken cancellationToken = default)
 
     /// <summary>
-	/// Create multiple devices with an initial twin.
-	/// </summary>
-	/// <param name="devices">The pairs of devices their twins that will be created. For fields such as deviceId
-	/// where device and twin have a definition, the device value will override the twin value.</param>
-	/// <param name="cancellationToken">The cancellation token.</param>
-	/// <returns>The result of the bulk operation.</returns>
+    /// Create multiple devices with an initial twin.
+    /// </summary>
+    /// <param name="devices">The pairs of devices their twins that will be created. For fields such as deviceId
+    /// where device and twin have a definition, the device value will override the twin value.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The result of the bulk operation.</returns>
 	public BulkRegistryOperationResult CreateWithTwin(Dictionary<DeviceIdentity, TwinData> devices, CancellationToken cancellationToken = default)
 
 	/// <summary>
