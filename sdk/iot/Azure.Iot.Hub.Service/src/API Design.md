@@ -89,7 +89,7 @@ public class Devices
     /// where device and twin have a definition, the device value will override the twin value.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The result of the bulk operation.</returns>
-    public async Task<Response<BulkRegistryOperationResult>> CreateIdentitiesWithTwinAsync(IEnumerable<IotHubDevice> devices, CancellationToken cancellationToken = default)
+    public async Task<Response<BulkRegistryOperationResult>> CreateIdentitiesWithTwinAsync(IDictionary<DeviceIdentity, TwinData> devices, CancellationToken cancellationToken = default)
 
     /// <summary>
     /// Create multiple devices. A maximum of 100 creations can be done per call, and each device identity must be unique. For larger scale operations, consider using IoT Hub jobs (https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities).
@@ -122,10 +122,9 @@ public class Devices
     /// <summary>
     /// List a set of device twins.
     /// </summary>
-    /// <param name="pageSize">The size of each page while paging over the device twins.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A pageable set of device twins.</returns>
-    public virtual AsyncPageable<TwinData> GetTwinsAsync(string pageSize = null, CancellationToken cancellationToken = default)
+    public virtual AsyncPageable<TwinData> GetTwinsAsync(CancellationToken cancellationToken = default)
 
     /// <summary>
     /// Get a device's twin.
@@ -134,18 +133,6 @@ public class Devices
     /// <param name="cancellationToken">The cancellation token</param>
     /// <returns>The device's twin, including reported properties and desired properties.</returns>
     public virtual async Task<Response<TwinData>> GetTwinAsync(string deviceId, CancellationToken cancellationToken = default)
-
-    /// <summary>
-    /// Replace a device's twin.
-    /// </summary>
-    /// <param name="deviceId">The unique identifier of the device to replace the twin on.</param>
-    /// <param name="twin">The new twin for the device. This replaces all properties on the old twin, even if the new twin doesn't have the same properties.</param>
-    /// <param name="ifMatch">A string representing a weak ETag for this twin, as per RFC7232. The replace operation is performed
-    /// only if this ETag matches the value maintained by the server, indicating that the twin has not been modified since it was last retrieved.
-    /// To force an unconditional replace, set If-Match to the wildcard character (*).</param>
-    /// <param name="cancellationToken"></param>
-    /// <returns>The server's new representation of the device twin.</returns>
-    public virtual async Task<Response<TwinData>> ReplaceTwinAsync(string deviceId, TwinData twin, string ifMatch = "*", CancellationToken cancellationToken = default)
 
     /// <summary>
     /// Update a device's twin.
@@ -157,7 +144,7 @@ public class Devices
     /// To force an unconditional update, set If-Match to the wildcard character (*).</param>
     /// <param name="cancellationToken">The cancellation token</param>
     /// <returns>The server's new representation of the device twin.</returns>
-    public virtual async Task<Response<TwinData>> UpdateTwinAsync(string deviceId, TwinData twinPatch, string ifMatch = "*", CancellationToken cancellationToken = default)
+    public virtual async Task<Response<TwinData>> UpdateTwinAsync(TwinData twinPatch, string ifMatch = null, CancellationToken cancellationToken = default)
 
     /// <summary>
     /// Update multiple devices' twins. A maximum of 100 updates can be done per call, and each operation must be done on a different device twin. For larger scale operations, consider using IoT Hub jobs (https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-identity-registry#import-and-export-device-identities).
@@ -177,24 +164,6 @@ public class Devices
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The result of the method invocation.</returns>
     public virtual async Task<Response<CloudToDeviceMethodResult>> InvokeMethodAsync(string deviceId, CloudToDeviceMethod directMethodRequest, CancellationToken cancellationToken = default)
-}
-
-/// <summary>
-/// The logical representation of a single device within IoT Hub.
-/// </summary>
-public class IotHubDevice
-{
-    public IotHubDevice(DeviceIdentity identity, TwinData twin)
-
-    /// <summary>
-    /// Contains all the device identity information, including device Id, authentication type, device capabilities, and more.
-    /// </summary>
-    public DeviceIdentity Identity { get; set; }
-
-    /// <summary>
-    /// Contains all the reported properties and desired properties for this device.
-    /// </summary>
-    public TwinData Twin { get; set; }
 }
 ```
 </details>
