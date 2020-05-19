@@ -50,7 +50,7 @@ public class Devices
     /// <param name="deviceIdentity">The device to create.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The created device.</returns>
-    public virtual async Task<Response<DeviceIdentity>> CreateIdentity(DeviceIdentity deviceIdentity, CancellationToken cancellationToken = default)
+    public virtual async Task<Response<DeviceIdentity>> CreateIdentityAsync(DeviceIdentity deviceIdentity, CancellationToken cancellationToken = default)
 
     /// <summary>
     /// Update a device.
