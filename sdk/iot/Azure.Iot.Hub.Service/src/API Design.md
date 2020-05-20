@@ -137,7 +137,6 @@ public class Devices
     /// <summary>
     /// Update a device's twin.
     /// </summary>
-    /// <param name="deviceId">The unique identifier of the device to update the twin on.</param>
     /// <param name="twinPatch">The properties to update. Any existing properties not referenced by this patch will be unaffected by this patch.</param>
     /// <param name="ifMatch">A string representing a weak ETag for this twin, as per RFC7232. The update operation is performed
     /// only if this ETag matches the value maintained by the server, indicating that the twin has not been modified since it was last retrieved.
